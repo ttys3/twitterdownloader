@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	log "github.com/Sirupsen/logrus"
 	tw "github.com/gohiweeds/twitterdownloader"
+	log "github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -14,18 +14,23 @@ func main() {
 
 	flag.Parse()
 
+	maybeurl := flag.Arg(0)
 	if *url == "" {
-		log.Errorf("URL not qualified or exist")
+		*url = maybeurl
+	}
+
+	if *url == "" {
+		log.Errorf("URL can not be empty, example: https://twitter.com/nixcraft/status/1407466222136954883")
 		return
 	}
 	client := tw.NewClient()
 
 	//Setup SOCK5
-	_, err := client.ClientWithSOCKS5("tcp", "127.0.0.1:1080")
-	if err != nil {
-		log.Errorf("SOCK5 Init failed: %s", err.Error())
-		return
-	}
+	// _, err := client.ClientWithSOCKS5("tcp", "127.0.0.1:1080")
+	// if err != nil {
+	// 	log.Errorf("SOCK5 Init failed: %s", err.Error())
+	// 	return
+	// }
 
 	twitter := &tw.Twitter{}
 	twitter.SetupClient(client)

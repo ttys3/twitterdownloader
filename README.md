@@ -10,18 +10,15 @@ Support jpeg and video download in Twitter
 # Usage
 
   Download Project:
-  ```
-  go get github.com/gohiweeds/twitterdownloader
-  ```
-  Install dependency:
-  ```
-  go get github.com/grafov/m3u8
-  go get github.com/Sirupsen/logrus
+
+  ```shell
+  go get github.com/gohiweeds/twitterdownloader/cmd/twdl
   ```
 
   Run Test command:
-  ```
-  go run cmd/main.go -url=https://twitter.com/i/status/1035056498307522560
+
+  ```shell
+  go run /cmd/twdl https://twitter.com/nixcraft/status/1407466222136954883
   ```
 
 ### How we know where is the Video ?
